@@ -7,18 +7,68 @@
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.0.0/dist/flowbite.min.js"></script>
     <!-- AOS CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"
+      rel="stylesheet"
+    />
 
     <style>
       html {
         scroll-behavior: smooth;
       }
+      .github-btn {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        font-size: 14px;
+        text-align: center;
+        padding: 5px 10px;
+        color: gray;
+        cursor: pointer;
+      }
+      .github-btn:hover {
+        color: magenta;
+      }
     </style>
+    <script src="animate-heart-canvas-browser.js?v=20230222171908"></script>
+    <script>
+      let queryData = getSearchData();
+      console.log(queryData);
+      let animateHeartCanvas = new AnimateHeartCanvas(
+        Number(queryData.hMin),
+        Number(queryData.hMax),
+        Number(queryData.countHeart),
+        Number(queryData.sizeMin),
+        Number(queryData.sizeMax),
+        queryData.bgColor
+      );
+
+      function getSearchData() {
+        let searchString = location.search;
+        if (searchString) {
+          let obj = {};
+          searchString = searchString.substring(1, searchString.length);
+          let tempArray = searchString.split("&");
+          tempArray.forEach((item) => {
+            obj[item.split("=")[0]] = decodeURIComponent(item.split("=")[1]);
+          });
+          return obj;
+        } else {
+          return false;
+        }
+      }
+    </script>
   </head>
 
   <body class="bg-gray-900">
+    <a
+      class="github-btn"
+      href="https://github.com/KyleBing/animate-heart-canvas"
+      >github</a
+    >
     <!--NAVBAR -->
     <nav
       class="fixed top-0 left-0 right-0 z-50 bg-blue-900 shadow-lg after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10"
@@ -44,7 +94,9 @@
             <a href="#Courses" class="text-gray-300 hover:text-white"
               >Courses</a
             >
-            <a href="#Pricing" class="text-gray-300 hover:text-white">Pricing</a>
+            <a href="#Pricing" class="text-gray-300 hover:text-white"
+              >Pricing</a
+            >
             <a href="#About" class="text-gray-300 hover:text-white">About</a>
           </div>
         </div>
@@ -54,10 +106,55 @@
     <!-- SPACER because navbar fixed -->
     <div class="h-20"></div>
 
+    <!-- carousel -->
+    <section id="Dashboard">
+      <div id="default-carousel" class="relative w-full" data-carousel="slide">
+        <div class="relative h-56 md:h-80 lg:h-96 overflow-hidden rounded-xl">
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img
+              src="./assets/images/C++.png"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 object-contain"
+            />
+          </div>
+
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img
+              src="./assets/images/net.png"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 object-contain"
+            />
+          </div>
+
+          <!-- Slide 1 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img
+              src="./assets/images/react.png"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 object-contain"
+            />
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img
+              src="./assets/images/node js.png"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 object-contain"
+            />
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img
+              src="./assets/images/postgreSQL.png"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!--DASHBOARD SECTION -->
-    <section id="Dashboard" class="py-20 text-center">
-      <h1 class="text-5xl font-bold text-white mb-5" data-aos="zoom-in">
-        Welcome to Rean Sut
+    <section class="py-5 text-center">
+      <h1 class="text-5xl font-bold text-white mb-1" data-aos="zoom-in">
+        Welcome to Rean Suot - រៀនសូត្រ
       </h1>
       <p class="text-gray-300 max-w-2xl mx-auto" data-aos="fade-up">
         Learn programming, technology, and IT skills with modern teaching.
@@ -90,10 +187,22 @@
         >
           <h4 class="text-3xl font-bold mb-5 text-center">C++ Programming</h4>
 
-          <p class="leading-7 text-gray-200">
-            Complete from basic to advanced. You will learn C++ fundamentals,
-            OOP, data structures, and more with real practice projects.
-          </p>
+          <h2 class="text-2xl font-bold mb-4 text-blue-400">Key Topics</h2>
+          <ul class="list-disc list-inside space-y-2 text-white">
+            <li>
+              Basics of C++: syntax, data types, operators, and expressions
+            </li>
+            <li>Control structures: loops, conditionals, and branching</li>
+            <li>Functions and modular programming</li>
+            <li>Arrays, strings, and pointers</li>
+            <li>
+              Object-Oriented Programming: classes, objects, inheritance,
+              polymorphism, encapsulation
+            </li>
+            <li>File input/output operations</li>
+            <li>Exception handling and debugging techniques</li>
+            <li>Introduction to the Standard Template Library (STL)</li>
+          </ul>
 
           <button
             class="bg-blue-700 px-5 py-3 mt-5 rounded-xl hover:bg-blue-800"
@@ -108,15 +217,29 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 px-10 mt-10">
         <!-- Course Content -->
         <div
-          class="text-white bg-gray-700 p-5 rounded-3xl"
+          class="text-white bg-gray-700 ml-2 p-5 rounded-3xl"
           data-aos="fade-left"
         >
           <h4 class="text-3xl font-bold mb-5 text-center">.Net Programming</h4>
-
-          <p class="leading-7 text-gray-200">
-            Complete from basic to advanced. You will learn C++ fundamentals,
-            OOP, data structures, and more with real practice projects.
-          </p>
+          <h2 class="text-2xl font-bold mb-4 text-blue-400">Key Topics</h2>
+          <ul class="list-disc list-inside space-y-2 text-white">
+            <li>Introduction to .NET framework and architecture</li>
+            <li>
+              C# Programming Basics: syntax, data types, operators, and
+              expressions
+            </li>
+            <li>Control structures: loops, conditionals, and branching</li>
+            <li>
+              Object-Oriented Programming: classes, objects, inheritance,
+              polymorphism, encapsulation
+            </li>
+            <li>Exception handling and debugging techniques</li>
+            <li>File input/output and data access using ADO.NET</li>
+            <li>Windows Forms and WPF application development</li>
+            <li>ASP.NET for web application development</li>
+            <li>Introduction to .NET Core and cross-platform development</li>
+            <li>Using the Entity Framework for database operations</li>
+          </ul>
 
           <button
             class="bg-blue-700 px-5 py-3 mt-5 rounded-xl hover:bg-blue-800"
@@ -135,37 +258,43 @@
         </div>
       </div>
     </section>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 px-10 mt-10">
-        <!-- Course Image -->
-        <div data-aos="fade-right">
-          <img
-            src="/Tailwincss/assets/images/node js.png"
-            alt=".Net"
-            class="rounded-3xl shadow-xl"
-          />
-        </div>
-
-        <!-- Course Content -->
-        <div
-          class="text-white bg-gray-700 p-5 rounded-3xl"
-          data-aos="fade-left"
-        >
-          <h4 class="text-3xl font-bold mb-5 text-center">Node JS Programming</h4>
-
-          <p class="leading-7 text-gray-200">
-            Complete from basic to advanced. You will learn C++ fundamentals,
-            OOP, data structures, and more with real practice projects.
-          </p>
-
-          <button
-            class="bg-blue-700 px-5 py-3 mt-5 rounded-xl hover:bg-blue-800"
-            data-aos="zoom-in"
-          >
-            Read More
-          </button>
-        </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 px-10 mt-10">
+      <!-- Course Image -->
+      <div data-aos="fade-right">
+        <img
+          src="/Tailwincss/assets/images/node js.png"
+          alt=".Net"
+          class="rounded-3xl shadow-xl"
+        />
       </div>
-    </section>
+
+      <!-- Course Content -->
+      <div class="text-white bg-gray-700 p-5 rounded-3xl" data-aos="fade-left">
+        <h4 class="text-3xl font-bold mb-5 text-center">Node JS Programming</h4>
+        <h2 class="text-2xl font-bold mb-4 text-blue-400">Key Topics</h2>
+        <ul class="list-disc list-inside space-y-2 text-white">
+          <li>Introduction to Node.js and its architecture</li>
+          <li>JavaScript fundamentals for Node.js</li>
+          <li>Node.js modules and package management with npm</li>
+          <li>
+            Asynchronous programming: callbacks, promises, and async/await
+          </li>
+          <li>Building web servers with Node.js and Express.js</li>
+          <li>Routing and middleware in Express.js</li>
+          <li>Working with databases: MongoDB, MySQL, or PostgreSQL</li>
+          <li>RESTful API development</li>
+          <li>Error handling and debugging in Node.js</li>
+          <li>Introduction to security, authentication, and deployment</li>
+        </ul>
+
+        <button
+          class="bg-blue-700 px-5 py-3 mt-5 rounded-xl hover:bg-blue-800"
+          data-aos="zoom-in"
+        >
+          Read More
+        </button>
+      </div>
+    </div>
     <section id="Courses" class="py-20">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 px-10 mt-10">
         <!-- Course Content -->
@@ -173,12 +302,22 @@
           class="text-white bg-gray-700 p-5 rounded-3xl"
           data-aos="fade-left"
         >
-          <h4 class="text-3xl font-bold mb-5 text-center">React JS Programming</h4>
-
-          <p class="leading-7 text-gray-200">
-            Complete from basic to advanced. You will learn C++ fundamentals,
-            OOP, data structures, and more with real practice projects.
-          </p>
+          <h4 class="text-3xl font-bold mb-5 text-center">
+            React JS Programming
+          </h4>
+          <h2 class="text-2xl font-bold mb-4 text-blue-400">Key Topics</h2>
+          <ul class="list-disc list-inside space-y-2 text-white">
+            <li>Introduction to React.js and its architecture</li>
+            <li>JSX syntax and rendering elements</li>
+            <li>Components: functional and class-based</li>
+            <li>Props and state management</li>
+            <li>Handling events and forms in React</li>
+            <li>Lifecycle methods and hooks (useState, useEffect, etc.)</li>
+            <li>React Router for navigation and SPA development</li>
+            <li>State management using Context API or Redux</li>
+            <li>Working with APIs and fetching data</li>
+            <li>Building responsive and interactive UI components</li>
+          </ul>
 
           <button
             class="bg-blue-700 px-5 py-3 mt-5 rounded-xl hover:bg-blue-800"
@@ -200,7 +339,6 @@
 
     <!--PRICING SECTION -->
     <section id="Pricing" class="py-20">
-
       <!-- Title -->
       <div
         class="w-full h-20 bg-gray-200 flex justify-center items-center"
@@ -211,16 +349,19 @@
 
       <!-- Cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10 px-10 mt-12">
-
         <!-- BASIC PLAN -->
         <div
           class="bg-gray-800 text-white p-8 rounded-3xl shadow-xl hover:scale-105 transition"
           data-aos="fade-up"
         >
           <h4 class="text-2xl font-bold mb-4">Basic</h4>
-          <p class="text-gray-300 mb-6">Perfect for beginners learning programming</p>
+          <p class="text-gray-300 mb-6">
+            Perfect for beginners learning programming
+          </p>
 
-          <p class="text-4xl font-bold mb-4">$9 <span class="text-lg text-gray-400">/ month</span></p>
+          <p class="text-4xl font-bold mb-4">
+            $9 <span class="text-lg text-gray-400">/ month</span>
+          </p>
 
           <ul class="text-gray-300 space-y-3 mb-6">
             <li>✔ Access to 10 Courses</li>
@@ -240,9 +381,13 @@
           data-aos="zoom-in"
         >
           <h4 class="text-2xl font-bold mb-4">Standard</h4>
-          <p class="text-gray-200 mb-6">Great for students who want more content</p>
+          <p class="text-gray-200 mb-6">
+            Great for students who want more content
+          </p>
 
-          <p class="text-4xl font-bold mb-4">$19 <span class="text-lg text-blue-200">/ month</span></p>
+          <p class="text-4xl font-bold mb-4">
+            $19 <span class="text-lg text-blue-200">/ month</span>
+          </p>
 
           <ul class="text-blue-100 space-y-3 mb-6">
             <li>✔ Access to all Courses</li>
@@ -251,7 +396,9 @@
             <li>✔ Email Support</li>
           </ul>
 
-          <button class="w-full bg-white text-blue-700 py-3 rounded-xl hover:bg-gray-200">
+          <button
+            class="w-full bg-white text-blue-700 py-3 rounded-xl hover:bg-gray-200"
+          >
             Choose Plan
           </button>
         </div>
@@ -265,7 +412,9 @@
           <h4 class="text-2xl font-bold mb-4">Premium</h4>
           <p class="text-gray-300 mb-6">For learners who need full features</p>
 
-          <p class="text-4xl font-bold mb-4">$29 <span class="text-lg text-gray-400">/ month</span></p>
+          <p class="text-4xl font-bold mb-4">
+            $29 <span class="text-lg text-gray-400">/ month</span>
+          </p>
 
           <ul class="text-gray-300 space-y-3 mb-6">
             <li>✔ All Courses + New Releases</li>
@@ -278,63 +427,63 @@
             Choose Plan
           </button>
         </div>
-
       </div>
     </section>
 
     <!--ABOUT SECTION -->
-<section id="About" class="py-20 bg-gray-100">
+    <section id="About" class="py-20 bg-gray-100">
+      <!-- Title -->
+      <div
+        class="w-full h-20 bg-gray-200 flex justify-center items-center"
+        data-aos="fade-down"
+      >
+        <h3 class="text-3xl font-bold text-center">About Us</h3>
+      </div>
 
-  <!-- Title -->
-  <div
-    class="w-full h-20 bg-gray-200 flex justify-center items-center"
-    data-aos="fade-down"
-  >
-    <h3 class="text-3xl font-bold text-center">About Us</h3>
-  </div>
+      <!-- Content -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-10 px-10 mt-12 items-center"
+      >
+        <!-- Left Image -->
+        <div data-aos="fade-right">
+          <img
+            src="./assets/images/logo.png"
+            alt="About Rean Sut"
+            class="rounded-3xl shadow-2xl w-50"
+          />
+        </div>
 
-  <!-- Content -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 px-10 mt-12 items-center">
+        <!-- Right Description -->
+        <div data-aos="fade-left">
+          <h3 class="text-4xl font-bold mb-5 text-gray-800">
+            Learn Smarter. Learn Faster. Learn With Us.
+          </h3>
 
-    <!-- Left Image -->
-    <div data-aos="fade-right">
-      <img
-        src="./assets/images/logo.png"
-        alt="About Rean Sut"
-        class="rounded-3xl shadow-2xl w-50"
-      />
-    </div>
+          <p class="text-gray-700 leading-7 mb-6">
+            Rean Sut (រៀនសូត្រ) is an online learning platform designed to help
+            students and professionals gain real-world skills in programming,
+            technology, and career development.
+          </p>
 
-    <!-- Right Description -->
-    <div data-aos="fade-left">
-      <h3 class="text-4xl font-bold mb-5 text-gray-800">
-        Learn Smarter. Learn Faster. Learn With Us.
-      </h3>
+          <p class="text-gray-700 leading-7 mb-6">
+            We create high-quality courses with clear explanations, practical
+            examples, and real projects — making learning easier and more
+            enjoyable.
+          </p>
 
-      <p class="text-gray-700 leading-7 mb-6">
-        Rean Sut (រៀនសូត្រ) is an online learning platform designed to help
-        students and professionals gain real-world skills in programming,
-        technology, and career development.
-      </p>
+          <p class="text-gray-700 leading-7 mb-6">
+            Our mission is to make high-quality tech education affordable and
+            accessible for everyone in Cambodia and around the world.
+          </p>
 
-      <p class="text-gray-700 leading-7 mb-6">
-        We create high-quality courses with clear explanations, practical
-        examples, and real projects — making learning easier and more enjoyable.
-      </p>
-
-      <p class="text-gray-700 leading-7 mb-6">
-        Our mission is to make high-quality tech education affordable and
-        accessible for everyone in Cambodia and around the world.
-      </p>
-
-      <button class="bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800">
-        Learn More
-      </button>
-    </div>
-
-  </div>
-
-</section>
+          <button
+            class="bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800"
+          >
+            Learn More
+          </button>
+        </div>
+      </div>
+    </section>
 
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
